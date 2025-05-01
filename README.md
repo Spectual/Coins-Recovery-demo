@@ -22,19 +22,21 @@ Previous phases have:
 ## Features
 
 - Fetches coin images from Harvard Art Museums API
-- Preprocesses images with advanced techniques:
+- Preprocesses images with basic techniques:
+  - Split front and back of coins for api images
   - Denoising
   - Contrast enhancement
-  - Automatic coin detection and segmentation
-- Implements multiple feature matching algorithms:
-  - ORB (Oriented FAST and Rotated BRIEF)
-  - SIFT (Scale-Invariant Feature Transform)
-  - SURF (Speeded Up Robust Features)
+  
+- Implements feature extraction and matching algorithms:
+  - ORB (Oriented FAST and Rotated BRIEF) -> feature extraction
+  - FLANN ( Fast Library for Approximate Nearest Neighbors) -> perform feature matching between two images
+  - Homography method to find transformation between two images -> verify the geometric consistency of matches
+  - Similarity Scoring -> similarity measure between coin images
 - Provides detailed match visualization:
   - Feature point matching visualization
   - Score distribution plots
   - Best matches summary
-- Stores results in SQLite database with JSON export capability
+- Stores results in SQLite database
 
 ## Installation
 
@@ -63,14 +65,18 @@ python main.py --api-key YOUR_API_KEY
 ```
 .
 ├── main.py              # Main script
-├── requirements.txt     # Python dependencies
-├── README.md           # This file
+├── requirements.txt   
+├── README.md          
 ├── data/
 │   ├── api_images/     # Images from Harvard API
-│   └── missing_images/ # Your images to match
+│   └── missing_images/ # Images to match
 ├── results/            # Output directory
+│   ├── processed_api/  
+│   ├── processed_missing/ 
+│   ├── visualizations/ # Matching visualizations
+│   └── results.json    # Matching result
 └── src/
-    ├── data_fetcher.py    # API interaction
+    ├── data_fetcher.py    # Fetch images
     ├── image_processor.py # Image preprocessing
     ├── feature_matcher.py # Feature matching
     ├── save_result.py    # Database operations
