@@ -1,5 +1,7 @@
 # Coin Image Matching System
 
+![example](./img/example.jpg)
+
 This project uses the Harvard Art Museums API to fetch coin images and match them with local images using computer vision techniques. It implements feature detection, matching, and visualization to help identify similar coins.
 
 ## Project Overview
