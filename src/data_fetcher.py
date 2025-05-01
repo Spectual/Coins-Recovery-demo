@@ -4,6 +4,7 @@ import time
 from tqdm import tqdm
 from typing import Optional
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -92,7 +93,6 @@ def fetch_coin_images(
                     }
                     
                     with open(os.path.join(save_dir, f"{filename}.json"), 'w') as f:
-                        import json
                         json.dump(metadata, f, indent=2)
                     
                     count += 1
@@ -106,7 +106,6 @@ def fetch_coin_images(
                 break
                 
             page += 1
-            time.sleep(1)  # Polite crawling
             
     logger.info(f"Successfully downloaded {count} images")
     return count

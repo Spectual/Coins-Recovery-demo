@@ -25,7 +25,7 @@ def preprocess_image(
         Preprocessed image
     """
     try:
-        # Convert to grayscale if needed
+        # Convert to grayscale
         if len(image.shape) == 3:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         
@@ -82,7 +82,7 @@ def find_coin_contour(image: np.ndarray) -> Optional[np.ndarray]:
         if not contours:
             return None
         
-        # Find the largest contour (assuming it's the coin)
+        # Find the largest contour 
         largest_contour = max(contours, key=cv2.contourArea)
         
         # Create a mask
@@ -123,10 +123,10 @@ def split_coin_image(
         # Get image dimensions
         height, width = img.shape[:2]
         
-        # Remove scale bar (last ~70 pixels)
+        # Remove scale bar 
         img = img[:, :-70]
         
-        # Calculate split point (middle of the remaining image)
+        # Calculate split point 
         new_width = width - 70
         split_point = new_width // 2
         

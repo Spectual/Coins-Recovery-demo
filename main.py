@@ -186,7 +186,6 @@ def main():
     args = parser.parse_args()
     
     try:
-        # Create necessary directories
         Path(args.api_images_dir).mkdir(parents=True, exist_ok=True)
         Path(args.missing_images_dir).mkdir(parents=True, exist_ok=True)
         Path(args.output_dir).mkdir(parents=True, exist_ok=True)

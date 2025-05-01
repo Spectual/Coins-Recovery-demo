@@ -84,7 +84,7 @@ class MatchVisualizer:
             save_path: Path to save the visualization
         """
         try:
-            # Load images from processed directories
+            # Load images
             processed_api_dir = self.output_dir.parent / "processed_api"
             processed_missing_dir = self.output_dir.parent / "processed_missing"
             
@@ -188,24 +188,3 @@ class MatchVisualizer:
             
         except Exception as e:
             logger.error(f"Error plotting score distribution: {e}")
-
-def visualize_matches(
-    db_path: str,
-    api_images_dir: str = "data/api_images",
-    missing_images_dir: str = "data/missing_images",
-    output_dir: str = "results/visualizations",
-    top_k: int = 5
-):
-    """
-    Visualize matches between API and missing images.
-    
-    Args:
-        db_path: Path to the SQLite database
-        api_images_dir: Directory containing API images
-        missing_images_dir: Directory containing missing images
-        output_dir: Directory to save visualizations
-        top_k: Number of top matches to visualize
-    """
-    visualizer = MatchVisualizer(db_path, api_images_dir, missing_images_dir, output_dir)
-    visualizer.visualize_best_matches(top_k)
-    visualizer.plot_score_distribution()

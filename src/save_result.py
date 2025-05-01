@@ -180,35 +180,3 @@ class MatchDatabase:
         except (sqlite3.Error, IOError) as e:
             logger.error(f"Error exporting results: {e}")
             raise
-
-def init_db(db_path: str) -> MatchDatabase:
-    """
-    Initialize and return a database connection.
-    
-    Args:
-        db_path: Path to the SQLite database file
-        
-    Returns:
-        Initialized MatchDatabase instance
-    """
-    return MatchDatabase(db_path)
-
-def save_match(
-    db_path: str,
-    api_image: str,
-    missing_image: str,
-    score: float,
-    metadata: Optional[dict] = None
-):
-    """
-    Save a match result to the database.
-    
-    Args:
-        db_path: Path to the SQLite database file
-        api_image: Name of the API image
-        missing_image: Name of the missing image
-        score: Match score
-        metadata: Additional metadata to save
-    """
-    db = MatchDatabase(db_path)
-    db.save_match(api_image, missing_image, score, metadata)

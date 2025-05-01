@@ -36,7 +36,7 @@ Previous phases have:
   - Feature point matching visualization
   - Score distribution plots
   - Best matches summary
-- Stores results in SQLite database
+- Stores and reads results in SQLite database
 
 ## Installation
 
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Place your missing coin images in the `data/missing_images` directory.
+1. Place your testing coin images in the `data/missing_images` directory.
 
 2. Run the main script:
 ```bash
